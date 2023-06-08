@@ -30,8 +30,8 @@ const NavbarSecondary = () => {
           divider={<Divider orientation="vertical" flexItem color={"white"} />}
           spacing={2}
         >
-          <Typography sx={{ fontWeight: "bold" }}>ES</Typography>
-          <Typography>EN</Typography>
+           {/*<Typography sx={{ fontWeight: "bold" }}>ES</Typography>
+            <Typography>EN</Typography>*/}
         </Stack>
       </Stack>
       <Box sx={{ backgroundColor: "custom.sienna", display: "flex", justifyContent: "center", height: { lg: "133px", sm: "112px", xs: "96px" }, padding: { lg: "16px 0", sm: "16px 0", xs: "16px 0" } }}>

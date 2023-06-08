@@ -2,7 +2,7 @@ import { styled } from '@mui/system';
 import { Box, Button, Container, Typography } from '@mui/material';
 import image from '../../img/hero-foto.png';
 import { Link } from 'react-router-dom'
-
+import '../hero/Hero.css'
 // Estilos para el contenedor de la imagen
 const ImageContainer = styled('div')({
   position: 'relative',

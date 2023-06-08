@@ -43,11 +43,11 @@ const NavbarTertiary = () => {
             divider={<Divider orientation="vertical" flexItem color={"white"} />}
             spacing={2}
           >
-            <Typography sx={{ fontWeight: "bold" }}>ES</Typography>
-            <Typography>EN</Typography>
+           {/*<Typography sx={{ fontWeight: "bold" }}>ES</Typography>
+            <Typography>EN</Typography>*/}
           </Stack>
         </Stack>
-        <Box sx={{ backgroundColor: "#835C44", display: "flex", justifyContent: "space-between", height: "133px", padding: "0 28px" }}>
+        <Box sx={{ backgroundColor: "#845c44", display: "flex", justifyContent: "space-between", height: "133px", padding: "0 28px" }}>
           <Box sx={{
             display: "flex",
             justifyContent: "center",

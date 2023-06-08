@@ -72,7 +72,7 @@ const SignIn = () => {
       setToken(data.data.access_token);
       sessionStorage.setItem("token", JSON.stringify(data.data.access_token));
       FindUser(allUsers, UserData.Email);
-      navigate("/");
+   
       if (sessionStorage.getItem("token")) {
         toast.success("¡Bienvenido! ", {
           position: "top-center",
@@ -84,6 +84,10 @@ const SignIn = () => {
           progress: undefined,
           theme: "light",
         });
+        setTimeout(()=>{
+          navigate("/");
+        },3000)
+     
       }
     } catch (error) {
       console.log(error);

@@ -1,0 +1,14 @@
+/* cuando esta en movile le quita el padding a la clase de mui */
+@media(max-width:768px) {
+.css-o1fqlu-MuiGrid-root>.MuiGrid-item{
+    padding: 0 !important;
+
+} 
+}
+/* cuando esta en resolucion que supera los 500px le agrega el padding asi tiene la separacion*/
+@media(min-width:500px) {
+    .css-o1fqlu-MuiGrid-root>.MuiGrid-item{
+        padding: 16px !important;
+        
+    } 
+}

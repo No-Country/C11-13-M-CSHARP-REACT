@@ -17,6 +17,7 @@ import NavListDrawerResponsive from "./navListDrawerResponsive.jsx";
 import logo from "../../assets/images/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "./navlink.jsx";
+
 import AccountMenu from "./menu.jsx";
 
 export default function Navbar() {
@@ -32,6 +33,7 @@ export default function Navbar() {
     setRol(null);
   };
   useEffect(() => {
+    // esto verifica que el componente se monto o no
     if (!componentMounted) {
       setComponentMounted(true);
       return;
@@ -51,7 +53,6 @@ export default function Navbar() {
   }, [token, rol]);
 
   return (
-
     <Box
       component="nav"
       sx={{
@@ -81,7 +82,7 @@ export default function Navbar() {
             }}
           >
             <LocalPhoneOutlinedIcon />
-            <Typography>+52 11 1010-2020</Typography>
+            <Typography>+54 11 1010-2020</Typography>
           </Box>
           <Stack
             direction="row"
@@ -90,8 +91,8 @@ export default function Navbar() {
             }
             spacing={2}
           >
-            <Typography sx={{ fontWeight: "bold" }}>ES</Typography>
-            <Typography>EN</Typography>
+           {/*<Typography sx={{ fontWeight: "bold" }}>ES</Typography>
+            <Typography>EN</Typography>*/}
           </Stack>
         </Stack>
         <Box
@@ -134,7 +135,7 @@ export default function Navbar() {
                   display: "flex",
                   alignItems: "center",
                   gap: { lg: "64px", sm: "22px", xs: "16px" },
-                  marginRight: "42px"
+                  marginRight: "42px",
                 }}
               >
                 <Link
@@ -177,19 +178,19 @@ export default function Navbar() {
                     {token ? (
                       <AccountMenu closeSession={closeSession} />
                     ) : (
-                      <NavLink
-                        to="/login"
-                      >
-                        <Button variant="yellow" size="small">Iniciar Sesión</Button>
+                      <NavLink to="/login">
+                        <Button variant="yellow" size="small">
+                          Iniciar Sesión
+                        </Button>
                       </NavLink>
                     )}
                   </Box>
                 </Box>
               ) : (
-                <NavLink
-                  to="/login"
-                >
-                  <Button variant="yellow" size="small">Iniciar Sesión</Button>
+                <NavLink to="/login">
+                  <Button variant="yellow" size="small">
+                    Iniciar Sesión
+                  </Button>
                 </NavLink>
               )}
             </Box>
@@ -203,7 +204,10 @@ export default function Navbar() {
         sx={{ display: { xs: "block", sm: "none" } }}
         closeSession={closeSession}
       >
-        <NavListDrawerResponsive onClick={() => setOpen(false)} closeSession={closeSession} />
+        <NavListDrawerResponsive
+          onClick={() => setOpen(false)}
+          closeSession={closeSession}
+        />
       </Drawer>
       <ToastContainer
         position="top-right"
@@ -217,7 +221,6 @@ export default function Navbar() {
         pauseOnHover
         theme="light"
       />
-      <ToastContainer />
-    </Box >
+    </Box>
   );
 }

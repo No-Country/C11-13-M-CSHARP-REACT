@@ -1,0 +1,43 @@
+.css-wvrxsu-MuiTypography-root{
+
+}
+@media(max-width:600px) {
+    .css-wvrxsu-MuiTypography-root {
+        margin: 0;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-weight: 400;
+        line-height: 1.334;
+        letter-spacing: 0em;
+        color: #FFFFFF;
+        line-height: 1.2;
+        max-width: 539px;
+        white-space: normal;
+        word-wrap: break-word;
+        font-family: Open Sans;
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        padding: 8px;
+    }
+}
+@media(min-width:768px) {
+    .css-wvrxsu-MuiTypography-root {
+        margin: 0;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-weight: 400;
+        line-height: 1.334;
+        letter-spacing: 0em;
+        color: #FFFFFF;
+        line-height: 1.2;
+        max-width: 539px;
+        white-space: normal;
+        word-wrap: break-word;
+        font-family: Open Sans;
+        font-size: 1rem
+      
+    }
+}
