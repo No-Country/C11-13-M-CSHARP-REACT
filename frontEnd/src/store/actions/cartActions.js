@@ -10,7 +10,7 @@ export function pushCart(date){
 }
 
 export function clearCart(){
-    console.log("clear de actions")
+    
     const vacio = []
     return function(dispatch){
         try{

@@ -1,4 +1,4 @@
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import {  Wallet } from "@mercadopago/sdk-react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import BasicTable from "./Table";
 import logo from "../../img/logo-sabores@2x.png";
@@ -24,11 +24,17 @@ const Details = () => {
   const [renderedCheckoutButton, setRenderedCheckoutButton] = useState(false);
 
   const data = useSelector((state) => state.shopingCart.data);
-  let id = useSelector((state) => state.Idpago?.Id);
+  let id = useSelector((state) => state.Idpago.Id);
 
   useEffect(() => {
     setIdMP(id);
+    console.log(idMP)
+    return () => {
+      setIdMP(0);
+      console.log(idMP)
+    };
   }, [id]);
+
 
   useEffect(() => {
     if (idMP && !renderedCheckoutButton) {
@@ -37,9 +43,10 @@ const Details = () => {
   }, [idMP, renderedCheckoutButton]);
 
   const resetStr = () => {
+    dispatch(payment(0));
     dispatch(clearCart());
+    setIdMP(0);
     resetStore();
-    window.walletBrickController?.unmount();
     navigate("/");
   };
 
@@ -64,6 +71,8 @@ const Details = () => {
             resetStr();
           }}
         />
+        
+
       );
     }
 
@@ -71,6 +80,7 @@ const Details = () => {
   };
 
   const pay = () => {
+    console.log(Wallet)
     setVisible(!visible);
     const total = data.reduce((accumulator, currentObject) => {
       const partialResult = currentObject.cantidad * currentObject.Precio;
@@ -114,7 +124,7 @@ const Details = () => {
         <Box sx={{ display: "flex", justifyContent: "center"}}>
           <AddressSelector/>
         </Box>
-        <BasicTable isempty={isempty} total={total} />
+        <BasicTable isempty={isempty} total={total} state={visible}/>
         <Box
           sx={{
             display: "flex",
@@ -130,11 +140,11 @@ const Details = () => {
             alignItems="center"
             spacing={4}
           >
-            <Button variant="contained" onClick={resetStr}>
+            {visible&& <Button variant="contained" onClick={resetStr}>
               Eliminar pedido
-            </Button>
+            </Button>}
             {visible && (
-              <Button variant="contained" onClick={pay} isVisible={visible}>
+              <Button variant="contained" onClick={pay}>
                 Pagar
               </Button>
             )}

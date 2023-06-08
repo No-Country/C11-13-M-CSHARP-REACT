@@ -11,7 +11,6 @@ import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { Box, TableFooter } from "@mui/material";
-import { resetStore } from "../../store/store";
 import { pushCart } from "../../store/actions/cartActions";
 import { useNavigate } from "react-router-dom";
 
@@ -42,24 +41,22 @@ const Cantidad = ({ cantidad = 1, onIncrement, onDecrement }) => {
       >
         {cantidad}
       </Box>
+
       <AddCircleOutlineIcon onClick={onIncrement} />
     </Box>
   );
 };
 
-const BasicTable = ({ isempty, sendData }) => {
+const BasicTable = ({ isempty, sendData, state }) => {
   const select = useSelector((state) => state.shopingCart.data);
   const [items, setItems] = useState(select);
   const [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
-
   useEffect(() => {
-    console.log(select)
-    if(items.length === 0){
-      navigate("/")
+    if (items.length === 0) {
+      navigate("/");
     }
     const calculateTotalPrice = () => {
       let total = 0;
@@ -103,9 +100,18 @@ const BasicTable = ({ isempty, sendData }) => {
   useEffect(() => {
     dispatch(pushCart(items));
   }, [dispatch, items]);
-  
+
   return (
-    <TableContainer component={Paper} sx={{ maxWidth: "1200px", margin: "auto", background: "#fcd4bc", boxShadow: "none", p: 0 }}>
+    <TableContainer
+      component={Paper}
+      sx={{
+        maxWidth: "1200px",
+        margin: "auto",
+        background: "#fcd4bc",
+        boxShadow: "none",
+        p: 0,
+      }}
+    >
       <Table sx={{ minWidth: "800px" }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -129,15 +135,35 @@ const BasicTable = ({ isempty, sendData }) => {
                 {item.Nombre}
               </TableCell>
               <TableCell align="right">
-                <Cantidad
-                  cantidad={item.cantidad}
-                  onIncrement={() => handleIncrement(index)}
-                  onDecrement={() => handleDecrement(index)}
-                />
+                <div
+                  style={{
+                    position: "relative",
+                    fontSize: "2.5rem",
+                    opacity: !state ? 0.5 : 1,
+                    pointerEvents: !state ? "none" : "auto",
+                  }}
+                >
+                  <Cantidad
+                    cantidad={item.cantidad}
+                    onIncrement={() => handleIncrement(index)}
+                    onDecrement={() => handleDecrement(index)}
+                  />
+                </div>
               </TableCell>
               <TableCell align="right">$ {item.Precio}</TableCell>
               <TableCell align="right">
-                <DeleteForeverOutlinedIcon onClick={() => handleDelete(index)} />
+              <div
+                  style={{
+                    position: "relative",
+                    fontSize: "2.5rem",
+                    opacity: !state ? 0.5 : 1,
+                    pointerEvents: !state ? "none" : "auto",
+                  }}
+                >
+                <DeleteForeverOutlinedIcon
+                  onClick={() => handleDelete(index)}
+                />
+                </div>
               </TableCell>
               <TableCell></TableCell>
             </TableRow>
@@ -146,7 +172,10 @@ const BasicTable = ({ isempty, sendData }) => {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={2}></TableCell>
-            <TableCell align="right" sx={{ fontWeight: "bold", fontSize:"1.2rem"}}>
+            <TableCell
+              align="right"
+              sx={{ fontWeight: "bold", fontSize: "1.2rem" }}
+            >
               Total: $ {totalPrice.toFixed(2)}
             </TableCell>
           </TableRow>

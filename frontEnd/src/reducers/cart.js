@@ -13,10 +13,7 @@ const shopingCart = createSlice({
       state.data = action.payload;
     },
     clearCarts(state, action){
-
-      console.log(state.data, "mierda")
       state.data = action.payload
-      console.log(state.data)
     }
   },
   
