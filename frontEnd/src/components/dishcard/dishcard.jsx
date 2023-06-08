@@ -57,8 +57,13 @@ export default function Dishcard({
           disabled={status}
           checked={isChecked}
           onChange={handleCheckboxChange}
-          style={{ marginRight: "5px" }}
-        />
+          style={{ 
+            marginRight: "5px",
+            opacity: sessionStorage.token === undefined ? 0.5 : 1,
+            pointerEvents:
+            sessionStorage.token === undefined ? "none" : "auto",
+            }}
+          />
         <label
           style={{ fontWeight: "bold", textAlign: "left", paddingLeft: 0 }}
         >

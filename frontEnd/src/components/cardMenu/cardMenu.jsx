@@ -108,7 +108,7 @@ const CardMenu = () => {
             MENÚ
           </div>
         </Grid>
-        {sessionStorage.token !== undefined && <Grid item>
+        <Grid item>
           <div
             onClick={handleClick}
             style={{
@@ -120,7 +120,7 @@ const CardMenu = () => {
           >
             DELIVERY
           </div>
-        </Grid>}
+        </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         {selectedOption && (

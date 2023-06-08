@@ -28,7 +28,6 @@ export default function Dishmenu({
     }
   }, [dispatch, categoriaId]);
 
-  
   const loadCart = (e) => {
     e.preventDefault();
 
@@ -83,36 +82,40 @@ export default function Dishmenu({
           position: "relative",
         }}
       >
-        { sessionStorage.token !== undefined && <div
-          onClick={(e) => loadCart(e)}
-          style={{
-            position: "relative",
-            fontSize: "2.5rem",
-            opacity: selectProducts.length === 0 || status ? 0.5 : 1,
-            pointerEvents:
-              selectProducts.length === 0 || status ? "none" : "auto",
-          }}
-        >
-          {sessionStorage.token !== undefined && <AddShoppingCartIcon sx={{ fontSize: "2.5rem" }} />}
+        {sessionStorage.token !== undefined && (
           <div
+            onClick={(e) => loadCart(e)}
             style={{
-              position: "absolute",
-              top: "-0.5rem",
-              right: "-0.5rem",
-              backgroundColor: "red",
-              fontSize: "0.7rem",
-              color: "white",
-              width: "1.3rem",
-              height: "1.3rem",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              position: "relative",
+              fontSize: "2.5rem",
+              opacity: selectProducts.length === 0 || status ? 0.5 : 1,
+              pointerEvents:
+                selectProducts.length === 0 || status ? "none" : "auto",
             }}
           >
-            {selectProducts.length}
+            (
+              <AddShoppingCartIcon sx={{ fontSize: "2.5rem" }} />
+            )
+            <div
+              style={{
+                position: "absolute",
+                top: "-0.5rem",
+                right: "-0.5rem",
+                backgroundColor: "red",
+                fontSize: "0.7rem",
+                color: "white",
+                width: "1.3rem",
+                height: "1.3rem",
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {selectProducts.length}
+            </div>
           </div>
-        </div>}
+        )}
       </div>
 
       <div
